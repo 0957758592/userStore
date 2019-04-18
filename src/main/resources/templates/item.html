@@ -14,36 +14,32 @@
     <thead>
     <tr>
         <th scope="col">id</th>
-        <th scope="col">firstName</th>
-        <th scope="col">lastName</th>
+        <th scope="col">name</th>
         <th scope="col">birth</th>
         <th scope="col">email</th>
-        <th scope="col">phoneNumber</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="user: ${users}">
-            <th th:text="${user.userId}" scope="row"></th>
-        <td th:text="${user.firstName}"></td>
-        <td th:text="${user.lastName}"></td>
+            <th th:text="${user.id}" scope="row"></th>
+        <td th:text="${user.name}"></td>
         <td th:text="${user.birth}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.phoneNumber}"></td>
         <td>
             <button type="button"
                    class="btn btn-warning w-100"
-                    data-toggle="modal" data-target="#update_${user.userId}" >
+                    data-toggle="modal" data-target="#update_${user.id}" >
                 Update User
             </button>
         </td>
 
         <!-- Modal Update-->
-        <div class="modal fade" id="update_${user.userId}" tabindex="-1" role="dialog"
+        <div class="modal fade" id="update_${user.id}" tabindex="-1" role="dialog"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form name="users__${user.userId}">
+                    <form name="users__${user.id}">
 
                         <div class="modal-header">
                             <h5 class="modal-title">Update User</h5>
@@ -54,14 +50,9 @@
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="${user.firstName}">First Name</label>
-                                <input type="text" class="form-control" id="${user.firstName}"
-                                       name="firstName" placeholder="name" value="${user.firstName}">
-                            </div>
-                            <div class="form-group">
-                                <label for="${user.lastName}">Last Name</label>
-                                <input type="text" class="form-control" id="${user.lastName}" name="lastName"
-                                       placeholder="lastName" value="${user.lastName}">
+                                <label for="${user.name}">First Name</label>
+                                <input type="text" class="form-control" id="${user.name}"
+                                       name="name" placeholder="name" value="${user.name}">
                             </div>
                             <div class="form-group">
                                 <label for="${user.birth}">Date of Birth</label>
@@ -73,17 +64,12 @@
                                 <input type="email" class="form-control" id="${user.email}" name="email"
                                        placeholder="email" value="${user.email}">
                             </div>
-                            <div class="form-group">
-                                <label for="${user.phoneNumber}">Phone Number</label>
-                                <input type="text" class="form-control" id="${user.phoneNumber}" name="phone"
-                                       placeholder="+380123456789" value="${user.phoneNumber}">
-                            </div>
                         </div>
 
                         <div class="modal-footer">
-                            <input type="hidden" name="id" value="${user.userId}">
+                            <input type="hidden" name="id" value="${user.id}">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button id="button_${user.userId}" type="button" class="btn btn-success">Update
+                            <button id="button_${user.id}" type="button" class="btn btn-success">Update
                                 User
                             </button>
                         </div>

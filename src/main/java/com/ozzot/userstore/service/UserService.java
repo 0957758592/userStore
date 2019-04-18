@@ -25,8 +25,8 @@ public class UserService{
         jdbcUserDao.add(user);
     }
 
-    public void update(int id) {
-        jdbcUserDao.update(id);
+    public void update(User user, int id) {
+        jdbcUserDao.update(user, id);
     }
 
     public void delete(int id) {

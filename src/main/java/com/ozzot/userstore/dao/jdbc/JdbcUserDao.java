@@ -3,7 +3,6 @@ package com.ozzot.userstore.dao.jdbc;
 import com.ozzot.userstore.dao.user.UserDao;
 import com.ozzot.userstore.entity.User;
 import com.ozzot.userstore.mapper.UserMapper;
-import com.ozzot.userstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -33,12 +32,12 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void add(User user) {
-        jdbcTemplate.update(ADD_USER, user.getFirstName(),  user.getBirth(), user.getEmail());
+        jdbcTemplate.update(ADD_USER, user.getName(),  user.getBirth(), user.getEmail());
     }
 
     @Override
-    public void update(int id) {
-        jdbcTemplate.update(UPDATE, new UserMapper(), id);
+    public void update(User user, int id) {
+        jdbcTemplate.update(UPDATE, user.getName(), user.getBirth(), user.getEmail(), id);
     }
 
     @Override

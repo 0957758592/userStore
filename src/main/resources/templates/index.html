@@ -17,42 +17,38 @@
     <thead>
     <tr>
         <th scope="col">id</th>
-        <th scope="col">firstName</th>
-        <th scope="col">lastName</th>
+        <th scope="col">name</th>
         <th scope="col">birth</th>
         <th scope="col">email</th>
-        <th scope="col">phoneNumber</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="user: ${users}">
-        <th th:text="${user.userId}" scope="row"></th>
-        <td th:text="${user.firstName}"></td>
-        <td th:text="${user.lastName}"></td>
+        <th th:text="${user.id}" scope="row"></th>
+        <td th:text="${user.name}"></td>
         <td th:text="${user.birth}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.phoneNumber}"></td>
         <td>
             <button
                     class="btn btn-warning"
-                    data-toggle="modal" th:data-target="'#update_'+${user.userId}">
+                    data-toggle="modal" th:data-target="'#update_'+${user.id}">
                 Update User
             </button>
-            <form th:action="@{/user/{id}/delete(id=${user.userId})}" th:object="${user}" method="post">
+            <form th:action="@{/user/{id}/delete(id=${user.id})}" th:object="${user}" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <input class="bg-danger text-white" type="submit" value="Delete User">
             </form>
-            <a th:href="@{http://localhost:8080/user/{id}(id=${user.userId})}">Details</a>
+            <a th:href="@{http://localhost:8080/user/{id}(id=${user.id})}">Details</a>
         </td>
 
         <!-- Modal Update-->
-        <div class="modal fade" th:id="update_+${user.userId}" tabindex="-1" role="dialog"
+        <div class="modal fade" th:id="update_+${user.id}" tabindex="-1" role="dialog"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form th:action="@{/user/{id}/update(id=${user.userId})}" th:object="${user}" method="post"
-                          th:name="users__+${user.userId}">
+                    <form th:action="@{/user/{id}/update(id=${user.id})}" th:object="${user}" method="post"
+                          th:name="users__+${user.id}">
 
                         <div class="modal-header">
                             <h5 class="modal-title">Update User</h5>
@@ -63,14 +59,9 @@
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label th:for="${user.firstName}">First Name</label>
-                                <input type="text" class="form-control" th:id="${user.firstName}"
-                                       name="firstName" placeholder="name" th:value="${user.firstName}">
-                            </div>
-                            <div class="form-group">
-                                <label th:for="${user.lastName}">Last Name</label>
-                                <input type="text" class="form-control" th:id="${user.lastName}" name="lastName"
-                                       placeholder="lastName" th:value="${user.lastName}">
+                                <label th:for="${user.name}">First Name</label>
+                                <input type="text" class="form-control" th:id="${user.name}"
+                                       name="name" placeholder="name" th:value="${user.name}">
                             </div>
                             <div class="form-group">
                                 <label th:for="${user.birth}">Date of Birth</label>
@@ -82,18 +73,13 @@
                                 <input type="email" class="form-control" th:id="${user.email}" name="email"
                                        placeholder="email" th:value="${user.email}">
                             </div>
-                            <div class="form-group">
-                                <label th:for="${user.phoneNumber}">Phone Number</label>
-                                <input type="text" class="form-control" th:id="${user.phoneNumber}" name="phone"
-                                       placeholder="+380123456789" th:value="${user.phoneNumber}">
-                            </div>
                         </div>
 
                         <div class="modal-footer">
-                            <!--<input type="hidden" name="id" th:value="${user.userId}">-->
+                            <!--<input type="hidden" name="id" th:value="${user.id}">-->
                             <input type="hidden" name="_method" value="put">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button th:id="button_+${user.userId}" type="submit" class="btn btn-success">Update
+                            <button th:id="button_+${user.id}" type="submit" class="btn btn-success">Update
                                 User
                             </button>
                         </div>
@@ -105,9 +91,7 @@
     </tr>
     </tbody>
 
-    <button
-            class="btn btn-warning"
-            data-toggle="modal" data-target="#add_addUser">
+    <button class="btn btn-warning" data-toggle="modal" data-target="#add_addUser">
         Add User
     </button>
 
@@ -127,14 +111,9 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName"
-                                   name="firstName" placeholder="name" >
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName"
-                                   placeholder="lastName" >
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control" id="name"
+                                   name="name" placeholder="name" >
                         </div>
                         <div class="form-group">
                             <label for="birth">Date of Birth</label>
@@ -146,15 +125,10 @@
                             <input type="email" class="form-control" id="email" name="email"
                                    placeholder="email" >
                         </div>
-                        <div class="form-group">
-                            <label for="phoneNumber">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" name="phone"
-                                   placeholder="+380123456789" >
-                        </div>
                     </div>
 
                     <div class="modal-footer">
-                        <!--<input type="hidden" name="id" th:value="${user.userId}">-->
+                        <!--<input type="hidden" name="id" th:value="${user.id}">-->
                         <input type="hidden" name="_method" value="post">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button id="button_add" type="submit" class="btn btn-success">

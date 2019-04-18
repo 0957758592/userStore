@@ -12,7 +12,7 @@ public interface UserDao {
 
     void add(User user);
 
-    void update(int id);
+    void update(User user, int id);
 
     void delete(int id);
 

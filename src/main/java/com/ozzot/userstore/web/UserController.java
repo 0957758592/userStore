@@ -26,20 +26,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public void addUser(@RequestBody User user) {
+    public String addUser(@ModelAttribute User user) {
         userService.addUser(user);
-//        return "redirect:/user";
+        return "redirect:/user";
     }
 
-//    @RequestMapping(value = "user/add", method = RequestMethod.POST)
-//    public String create(Model model){
-//        model.addAttribute("user", new User());
-//        return "create";
-//    }
-
     @RequestMapping(value = "/user/{id}/update", method = RequestMethod.PUT)
-    public String update(@PathVariable int id) {
-        userService.update(id);
+    public String update(@ModelAttribute User user, @PathVariable int id) {
+        userService.update(user, id);
         return "redirect:/user";
     }
 
