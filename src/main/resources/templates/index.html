@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>UserStore</title>
 </head>
 <body>
 <table class="table">
@@ -31,13 +31,13 @@
         <td th:text="${user.email}"></td>
         <td>
             <button
-                    class="btn btn-warning"
+                    class="btn btn-warning text-white w-50"
                     data-toggle="modal" th:data-target="'#update_'+${user.id}">
                 Update User
             </button>
             <form th:action="@{/user/{id}/delete(id=${user.id})}" th:object="${user}" method="post">
                 <input type="hidden" name="_method" value="delete">
-                <input class="bg-danger text-white" type="submit" value="Delete User">
+                <button class="btn btn-danger text-white w-50" type="submit">Delete User</button>
             </form>
             <a th:href="@{http://localhost:8080/user/{id}(id=${user.id})}">Details</a>
         </td>
@@ -76,7 +76,6 @@
                         </div>
 
                         <div class="modal-footer">
-                            <!--<input type="hidden" name="id" th:value="${user.id}">-->
                             <input type="hidden" name="_method" value="put">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button th:id="button_+${user.id}" type="submit" class="btn btn-success">Update
@@ -91,7 +90,7 @@
     </tr>
     </tbody>
 
-    <button class="btn btn-warning" data-toggle="modal" data-target="#add_addUser">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#add_addUser">
         Add User
     </button>
 
@@ -128,12 +127,10 @@
                     </div>
 
                     <div class="modal-footer">
-                        <!--<input type="hidden" name="id" th:value="${user.id}">-->
                         <input type="hidden" name="_method" value="post">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button id="button_add" type="submit" class="btn btn-success">
-                            Add
-                            User
+                            Add User
                         </button>
                     </div>
                 </form>

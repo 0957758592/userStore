@@ -1,4 +1,4 @@
-package com.ozzot.userstore.dao.user;
+package com.ozzot.userstore.dao;
 
 import com.ozzot.userstore.entity.User;
 

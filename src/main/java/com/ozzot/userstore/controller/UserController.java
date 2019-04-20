@@ -1,4 +1,4 @@
-package com.ozzot.userstore.web;
+package com.ozzot.userstore.controller;
 
 import com.ozzot.userstore.entity.User;
 import com.ozzot.userstore.service.UserService;
