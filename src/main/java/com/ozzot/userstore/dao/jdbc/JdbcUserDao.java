@@ -7,27 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.ozzot.userstore.dao.jdbc.JdbcConstants.*;
 
 @Repository
 public class JdbcUserDao implements UserDao {
+    private static final String GET_ALL = "SELECT * from users;";
+    private static final String GET_BY_ID = "SELECT id, name, birth, email from users WHERE id=?;";
+    private static final String ADD_USER = "INSERT INTO users (name, birth, email) values (?,?,?);";
+    private static final String DELETE = "DELETE from users where id=?;";
+    private static final String UPDATE = "UPDATE users SET name=?, birth=?, email=? WHERE id=?;";
+
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    //for UnitTest only
     public JdbcUserDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List<User> getAll() {
-        List<User> users = new ArrayList<>();
-        users.addAll(jdbcTemplate.query(GET_ALL, new UserMapper()));
-        return users;
+        return jdbcTemplate.query(GET_ALL, new UserMapper());
     }
 
     @Override

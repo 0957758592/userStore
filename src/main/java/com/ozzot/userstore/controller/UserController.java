@@ -17,12 +17,16 @@ public class UserController {
 
     @RequestMapping("/user")
     public String getList(Model model) {
-        return getAllUsers(model);
+        List<User> list = userService.getAll();
+        model.addAttribute("users", list);
+        return "index";
     }
 
     @RequestMapping("/user/{id}")
     public String getById(@PathVariable int id, Model model) {
-        return getUser(id, model);
+        User user = userService.getById(id);
+        model.addAttribute("user", user);
+        return "item";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
@@ -41,18 +45,6 @@ public class UserController {
     public String delete(@PathVariable int id) {
         userService.delete(id);
         return "redirect:/user";
-    }
-
-    private String getAllUsers(Model model) {
-        List<User> list = userService.getAll();
-        model.addAttribute("users", list);
-        return "index";
-    }
-
-    private String getUser(int id, Model model) {
-        User user = userService.getById(id);
-        model.addAttribute("users", user);
-        return "item";
     }
 
 }
