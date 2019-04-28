@@ -31,8 +31,7 @@ public class JdbcUserDaoTest {
                 .build();
 
         jdbcTemplate = new JdbcTemplate(embeddedDatabase);
-        userDao = new JdbcUserDao(jdbcTemplate
-        );
+        userDao = new JdbcUserDao(jdbcTemplate);
     }
 
     @After

@@ -14,28 +14,28 @@ public class UserRestController{
     @Autowired
     UserService userService;
 
-    @GetMapping(path = {"/users"})
+    @GetMapping(path = {"/user"})
     public List<User> getAll() {
         return userService.getAll();
     }
 
-    @GetMapping(path = {"/{id}/user"})
-    public User getById(@PathVariable("id") int id) {
+    @GetMapping(path = {"/user/{id}"})
+    public User getById(@PathVariable int id) {
         return userService.getById(id);
     }
 
-    @PostMapping(path = {"/add"})
+    @PostMapping(path = {"/user/add"})
     public void add(@ModelAttribute User user) {
         userService.addUser(user);
     }
 
-    @PutMapping(path = {"/{id}/user"})
-    public void update(@ModelAttribute User user,@PathVariable("id") int id) {
+    @PutMapping(path = {"/user/{id}/update"})
+    public void update(@ModelAttribute User user,@PathVariable int id) {
         userService.update(user,id);
     }
 
-    @DeleteMapping(path = {"/user/{id}"})
-    public void delete(@PathVariable("id") int id) {
+    @DeleteMapping(path = {"/user/{id}/delete"})
+    public void delete(@PathVariable int id) {
         userService.delete(id);
     }
 }

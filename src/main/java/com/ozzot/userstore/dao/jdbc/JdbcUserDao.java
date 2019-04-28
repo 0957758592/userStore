@@ -17,7 +17,6 @@ public class JdbcUserDao implements UserDao {
     private static final String DELETE = "DELETE from users where id=?;";
     private static final String UPDATE = "UPDATE users SET name=?, birth=?, email=? WHERE id=?;";
 
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
