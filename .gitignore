@@ -3,6 +3,7 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 
 /src/test/java/com/ozzot/userstore/controller/AbstractTest.java
+\src\test\java\com\ozzot\userstore\controller\UserRestControllerTest.java
 
 ### STS ###
 .apt_generated

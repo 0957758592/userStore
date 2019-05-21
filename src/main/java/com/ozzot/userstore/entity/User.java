@@ -38,7 +38,6 @@ public class User {
         this.name = name;
     }
 
-
     public LocalDate getBirth() {
         return birth;
     }
