@@ -33,7 +33,7 @@ public class UserController {
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String addUser(@ModelAttribute User user) {
         userService.addUser(user);
-        return "redirect:/user";
+        return "redirect:/user/";
     }
 
     @RequestMapping(value = "/{id}/update", method = RequestMethod.PUT)

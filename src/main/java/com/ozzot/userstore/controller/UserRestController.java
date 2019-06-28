@@ -25,12 +25,12 @@ public class UserRestController{
     }
 
     @PostMapping(path = {"/user/add"})
-    public void add(@ModelAttribute User user) {
+    public void add(@RequestBody User user) {
         userService.addUser(user);
     }
 
     @PutMapping(path = {"/user/{id}/update"})
-    public void update(@ModelAttribute User user,@PathVariable int id) {
+    public void update(@RequestBody User user, @PathVariable int id) {
         userService.update(user,id);
     }
 

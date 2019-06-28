@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -36,12 +37,12 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void add(User user) {
-        jdbcTemplate.update(ADD_USER, user.getName(), user.getBirth(), user.getEmail());
+        jdbcTemplate.update(ADD_USER, user.getName(), Date.valueOf(user.getBirth()), user.getEmail());
     }
 
     @Override
     public void update(User user, int id) {
-        jdbcTemplate.update(UPDATE, user.getName(), user.getBirth(), user.getEmail(), id);
+        jdbcTemplate.update(UPDATE, user.getName(), Date.valueOf(user.getBirth()), user.getEmail(), id);
     }
 
     @Override
